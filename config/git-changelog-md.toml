@@ -1,0 +1,13 @@
+bump = "auto"
+convention = "conventional"
+in-place = false
+marker-line = "<!-- insertion marker -->"
+output = "changelog.md"
+parse-refs = false
+parse-trailers = false
+provider = "github"
+repository = "."
+template = "angular"
+version-regex = "^## \\\\[(?P<version>v?[^\\\\]]+)"
+versioning = "semver"
+zerover = true
