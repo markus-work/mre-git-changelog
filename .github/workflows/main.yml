@@ -1,0 +1,24 @@
+name: Git Changelog
+
+on:
+    push:
+
+jobs:
+    create-changelog:
+        runs-on: ubuntu-latest
+        matrix:
+            requirements-file: [requirements.txt, requirements-fixed.txt]
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                    python-version: 3.x
+
+            - name: Install dependencies
+              run: pip install 
+
+            - name: Run git-changelog
+              run: git-changelog --config-file config/git-changelog-md.toml
