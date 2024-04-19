@@ -6,8 +6,9 @@ on:
 jobs:
     create-changelog:
         runs-on: ubuntu-latest
-        matrix:
-            requirements-file: [requirements.txt, requirements-fixed.txt]
+        strategy:
+            matrix:
+                requirements: [requirements.txt, requirements-fixed.txt]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
@@ -18,7 +19,7 @@ jobs:
                     python-version: 3.x
 
             - name: Install dependencies
-              run: pip install 
+              run: pip install -r ${{ matrix.requirements }}
 
             - name: Run git-changelog
               run: git-changelog --config-file config/git-changelog-md.toml
