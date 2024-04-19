@@ -5,10 +5,11 @@ on:
 
 jobs:
     create-changelog:
-        runs-on: windows-latest
+        runs-on: ${{ matrix.os }}
         strategy:
             matrix:
                 requirements: [requirements.txt, requirements-fixed.txt]
+                os: [windows-latest, ubuntu-latest, macos-latest]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
